@@ -7,14 +7,14 @@ import sqlite3
 
 import pandas as pd
 
-from constants import FLATTEN_SQL
-from model import SavedCSV
-from paths import DATA_DIR
+from .constants import FLATTEN_SQL
+from .model import SavedCSV
+from .paths import DATA_DIR, SQLITE_DB
 
 def flattened_exercise_to_csv() -> SavedCSV:
     """Using a specified set of tables and database, flatten the tables into a single table.
     Saves this table as a csv in the data directory of the project"""
-    conn = sqlite3.connect('../exercise01.sqlite') # No need to disconnect, is handled by garbage collector
+    conn = sqlite3.connect(SQLITE_DB) # No need to disconnect, is handled by garbage collector
     flattened = pd.read_sql_query(FLATTEN_SQL, conn)
     return dataframe_to_csv(flattened, DATA_DIR)
 
@@ -36,3 +36,10 @@ def dataframe_to_csv(dataframe: pd.DataFrame, directory: Path) -> SavedCSV:
         pickle.dump(data_map, pkl_file)
     dataframe.to_csv(csv_path, index=False)
     return SavedCSV(csv=csv_path, data_map=data_map_path)
+
+
+def csv_to_dataframe(csv_path: SavedCSV) -> pd.DataFrame:
+    """Takes csv and data_map and translate it into a pandas dataFrame."""
+    with csv_path.data_map.open('rb') as pickle_file:
+        data_map = pickle.load(pickle_file)
+    return pd.read_csv(csv_path.csv, dtype=data_map)
