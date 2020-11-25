@@ -27,4 +27,7 @@ def test_csv_to_dataframe(temp_dir):
 
     # Check that column types are imported correctly
     output = csv_to_dataframe(saved_csv)
+    # If read directly, types change
+    # But if read using function, types come in correctly
+    assert pd.read_csv(saved_csv.csv).dtypes.to_dict()['string_col'] == int
     assert output.dtypes.to_dict() == {'string_col': object, 'integer_col': int}

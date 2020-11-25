@@ -7,9 +7,9 @@ import sqlite3
 
 import pandas as pd
 
-from .constants import FLATTEN_SQL
-from .model import SavedCSV
-from .paths import DATA_DIR, SQLITE_DB
+from constants import FLATTEN_SQL
+from model import SavedCSV
+from paths import DATA_DIR, SQLITE_DB
 
 def flattened_exercise_to_csv() -> SavedCSV:
     """Using a specified set of tables and database, flatten the tables into a single table.
