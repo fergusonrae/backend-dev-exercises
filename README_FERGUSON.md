@@ -12,6 +12,7 @@
 - `conftest.py`: Configuration file for pytest. Defines project-wide fixtures.
 - `environment.yml`: Conda env file
 
+&nbsp;
 # Setup
 Create environment with conda
 ```shell
@@ -22,19 +23,38 @@ Use .editorconfig
 - PyCharm: No additional steps needed
 - VSCode: Download `editorconfig` extension and restart program
 
+&nbsp;
 # Run through Terminal
 ```shell
 conda activate rti_project
 flask run
 ```
 
+&nbsp;
 # Run Tests
 ```shell
 conda activate rti_project
 pytest
 ```
 
+&nbsp;
+# Project Overview
+**App**
+- `home`: Contains links to the following pages
+- `download-csv`: Downloads on the user's computer a flattened csv of the latest information in sqlite
+- `data-exploration`: The html output of a jupyter notebook showing data exploration using data collected from the sqlite db on 11/24/2020
+- `analysis`: The html output of a jupyter notebook showing data exploration using data collected from the sqlite db on 11/24/2020
 
+
+**Time to Complete: 4hour:30min**
+- Diagramming and organizing approach: ~ 1 hour
+- Collection and translation of sqlite db with tests: ~ 30 min
+- Data analysis and exploration: ~ 1 hour
+- Flask setup: ~ 15 min
+- Flask setup error resolution: ~ 30 min
+- Docker setup (with error resolution): ~ 45 min
+
+&nbsp;
 # Next Steps
 - Project
     - Collect desired focus of application
