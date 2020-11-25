@@ -1,0 +1,10 @@
+name: rti_project
+channels:
+  - defaults
+dependencies:
+  - jupyter
+  - pandas
+  - pylint
+  - flask
+  - pytest
+  - seaborn
