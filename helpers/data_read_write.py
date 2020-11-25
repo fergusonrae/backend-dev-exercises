@@ -14,10 +14,14 @@ from .paths import DATA_DIR, SQLITE_DB
 def flattened_exercise_to_csv() -> SavedCSV:
     """Using a specified set of tables and database, flatten the tables into a single table.
     Saves this table as a csv in the data directory of the project"""
-    conn = sqlite3.connect(SQLITE_DB) # No need to disconnect, is handled by garbage collector
-    flattened = pd.read_sql_query(FLATTEN_SQL, conn)
+    flattened = flattened_exercise()
     return dataframe_to_csv(flattened, DATA_DIR)
 
+def flattened_exercise() -> pd.DataFrame:
+    """Flattens the tables in the specified db"""
+    conn = sqlite3.connect(SQLITE_DB) # No need to disconnect, is handled by garbage collector
+    flattened = pd.read_sql_query(FLATTEN_SQL, conn)
+    return flattened
 
 def dataframe_to_csv(dataframe: pd.DataFrame, directory: Path) -> SavedCSV:
     """Saves a timestamped csv and its corresponding data map to the designated directory.
