@@ -2,6 +2,7 @@
 # Directory
 
 - `data`: Static datasets used for analysis
+- `doc`: Contains diagram used to structure project
 - `helpers`: Folder of functions and test to collect information for the app.
 - `notebook`: Folder containing cleared Jupyter notebook code
 - `view`: Dir of front end html files
